@@ -1,0 +1,30 @@
+2023.03.17.금
+
+리액트 터미널에
+npm start :시작
+
+리액트 화면
+http://localhost:3000/->http://localhost:3000/index.html 생략됨
+
+함수
+render()  : 
+ReactDOM.render(<App/>,document.getElementById("root"));
+<App/> 컴포넌트를, "root"에 적용한다
+
+
+연습용 react2-study에서 port번호를 3005번으로 변경하기
+1.연습용 폴더에서 pacage.json
+2.script에서 "start": "react-scripts start" 를  "start": "set PORT=3005 && react-scripts start" 로 변경
+
+컴포넌트 분할하기 export import
+
+app.js  -> app.jsx로 바꾸면 앞에 아이콘이 바뀐다
+.jsx : 리액트 확장자
+
+
+연습문제 1
+
+연습문제2
+버튼을 누르면 삭제
+
+https://github.com/Rccn3202/Rccn3202-java_study_reactSto.git

@@ -1,0 +1,60 @@
+2023.03.20.월
+
+Props
+
+import
+1. 외부 컴포넌트에 작성
+export const ColoredMessage = ()=>{
+    const contentStyle={
+        color:"blue",
+        fontSize:"20px"
+    };
+    return <p style={contentStyle}>잘 지내?</p>
+}
+2.jsx 파일에 임포트
+import { ColoredMessage } from "./components/ColoredMessage";
+
+3.jsx에 호출
+리턴 안에 <ColoredMessage></ColoredMessage>
+
+4.Props 사용
+App.jsx에 <ColoredMessage color="green" message="주말에 공부했"></ColoredMessage>
+새로운jsx에 
+export const ColoredMessage = (props)=>{
+    const contentStyle={
+        color:props.color,
+        fontSize:"20px"
+    };
+    return <p style={contentStyle}>{props.message}</p>
+
+
+1. 새 파일에 익스포트 한다 export const PropsEx01 =() =>{}
+2. 앱 파일에 임포트한다  import { PropsEx01 } from "./components/PropsEx01";
+3. 리턴에 <PropsEx01 color="blue" word="바다"></PropsEx01> 작성
+4. 새 파일에 내용 작성
+1)(props)
+2)const contentStyle 작성
+const contentStyle={
+    color:props.color,
+    fontSize:"25px", 
+    backgroundColor:"black",
+3)리턴 작성return(<p style={contentStyle}>{props.word}</p>)  //색깔은 style을 받고 문구는 {props.} 으로 받는다
+
+
+state함수
+
+
+ index.html을 리액트와 연결 <div id="root"></div>  리액트 시작점
+
+랜더링
+:
+
+카페 리액트 중 useEffect
+재렌더링과 부작용
+
+
+책 리액트와 css 5강
+
+npm install node-sass :필요한 라이브러리 설치하기
+npm install node-sass@8.0.0 : 버전변경
+package.json에 "node~~있는지 확인

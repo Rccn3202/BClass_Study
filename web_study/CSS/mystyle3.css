@@ -1,0 +1,41 @@
+.header {
+    color:red;
+}
+h2{
+    color: green;
+    font-variant: small-caps;
+}
+#font1{
+    font-family: 궁서체;
+    font-style: italic;
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+h3{
+    text-align: center;
+}
+a:link{
+    color:#ff00f0;
+    text-decoration: none;
+    font-size: large ;
+}
+a:visited{
+    color: rgb(184,71,44);
+    font-size:x-large;
+}
+a:hover{
+    color: rgba(10, 3,90, 0.9);
+    font-size: xx-large;
+}
+a:active{
+    color: darkgoldenrod;
+    font-size: medium;
+}
+body{
+    background-color: #ff00f0;
+    background-attachment: fixed   ;
+    background-image: url("../11.jpg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    
+}

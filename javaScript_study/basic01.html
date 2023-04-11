@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 공부</title>
+</head>
+<body>
+    <h1 id="heading"> 자바스크립트 </h1>
+    <p id="text"> 위 텍스트를 클릭해 보세요 </p>
+    <h3 id="text1"> confirm 연습 </h3>
+    <h3 id="text2"> prompt 연습 </h3>
+    <h3 id="ko99"> 구구단 연습 </h3>
+    <h3 id="ageCalc">나이계산</h3>
+    <h3 id="de">부서</h3>
+    <h3 id="area">자리 배치도(while문 연습)</h3>
+    <h3 id="hoisting">var 변수를 끌어올린디</h3>
+  </body>
+   <script>
+      var heading = document.getElementById("heading");
+      var heading1 = document.querySelector("#heading");
+    //   heading.onclick = red();
+      
+    //   function red() {
+    //     heading.style.color="red";
+    //   }
+      heading1.onclick = function(){
+        heading1.style.color="blue";
+      }
+   </script>
+   <script  src="change-color.js"> </script>
+</html>

@@ -1,0 +1,146 @@
+2023.03.22.수
+
+6장
+useEffect( 콜백함수, [] )
+재랜더링되는 것을 방지
+
+memo( ); 상위컴포넌트가 랜더링이되면
+             하위컴포넌트도 자동으로 랜더링되는 것을
+             막아준다. 
+useCallback();
+     props 전달받은 하위컴포넌트는
+     상위컴포넌트가 랜더링되면
+     하위컴포넌트가 변형되지 않아도
+     자동으로 랜더링되는 것을 방지
+     예) 버튼, 리셋버튼
+
+7장 글로벌 state~
+글로벌 state: 모든 컴포넌트가 사용할 수 있는 state를 만든다. 공통 state
+그러나 props를 쓰는 것이 낫다. 글로벌 권장X
+
+context에서 글로벌 state 3단계 필요
+
+요즘엔 리액트와 비슷한 프레임워크인 리덕스 사용함
+
+리액트 프로젝트 만들기
+npx create-react-app my-app3
+npx create-react-app my-app3 --template typescript
+
+**교재에 없는 내용**
+카페 리액트-Router 사용하기
+2.라우터
+3.타입 스크립트
+문자열 string 숫자 number <제네릭> <string> 등등
+~~.tsx (마이크로소프트사의 open 스트립트(타임스크립트))
+4.axios
+
+카페에 json으로 작업하기-모질라 퍼옴 이거 참고(그냥 보는 정도)
+
+다음달에 json 데이터를 받아오려면 서버에 올려두고 가지고 와야함(이건 백엔드 개발자가 해줌)
+근데 서버에 올려두지 못하고 개발 연습을 해야한다면 jsonplaceholder.typicode.com 사이트에서 샘플 json파일 가져다 쓰면 된다
+
+오늘 학습 내용
+
+1. 글로벌state복습 - o 
+2. 라우터 - 0
+ npm install react-router-dom
+   <a href=~>
+  링크처리
+3. 타입스크립트 0
+문자열 string
+숫자 number
+< 제네릭>
+<string> 
+4. axios
+비동기방식으로
+자료 가져오기
+
+12시 5분까지 쉬기
+
+
+useEffect( 콜백함수, [] )
+재랜더링되는 것을 방지
+
+memo( ); 상위컴포넌트가 랜더링이되면
+             하위컴포넌트도 자동으로 랜더링되는 것을
+             막아준다. 
+useCallback();
+     props 전달받은 하위컴포넌트는
+     상위컴포넌트가 랜더링되면
+     하위컴포넌트가 변형되지 않아도
+     자동으로 랜더링되는 것을 방지
+     예) 버튼, 리셋버튼
+
+모든 컴포넌트가 사용할 수 있는 State를 만듬
+공통state
+
+props는 권장, 글로벌값 권장하지 않음
+
+Card 컴포넌트도 공통 State를
+사용하고 싶다.
+useContext() 함수를 이용하면 됨
+
+리액트와 비슷한 프레임워크
+리덕스
+
+index.js
+index.tsx; 마이크로소프트사의 
+             open 스크립트 (타임스크립트)
+
+확장자 .tsx
+
+Student obj;
+
+class Student{
+    String str;
+    int num;
+}
+
+1시 10분까지 쉬기
+
+네트워크망에서
+데이터를 주고 받는다
+표준 형식
+xml, json형식 
+
+정부에서 개발자에게
+데이터 공공데이터 주기
+표준 형식
+xml, json형식 
+
+개발자가 사용하는 도구
+자바, C, 파이썬, JS, React...
+
+세계에 open API
+클라우드에 있는 open API들은
+xml, json형식으로 
+데이터 주고 받기 
+
+자바 - json 가지고 올 수 있나요? yes
+자바 데이터 - json 만들 수 있나요? yes
+
+자바스크립트 - json 가지고 올 수 있나요? yes
+자바스크립트 데이터 - json 만들 수 있나요? yes
+
+json 데이터를 받아오려면 서버에 올려두고 가지고 와야한다
+=> 백앤드 개발자가 해줌
+ 
+그런데 서버에 올려 두지 못하고 개발 연습을 해야 한다면
+https://jsonplaceholder.typicode.com/ 사이트에서
+샘플 json파일을 가져다 쓰면 된다. 
+
+
+222쪽 앤드포인트 https://jsonplaceholder.typicode.com/posts
+https://reactrouter.com/en/main/router-components/hash-router
+
+--------------------
+맵 영상 보기
+맵 만들어놓기
+리스트버튼이랑 연결 -https://h-coding.tistory.com/45
+자세한 위치 적어놓기(대사관?)+링크 자세히보기>
+배경/글씨색 적어놓기
+
+
+
+----------------------
+구린 음량버튼 뛰어다니는 공 잡아야함

@@ -1,0 +1,76 @@
+2023.03.24.금
+
+1.길벗 https://books.google.co.kr/books?id=_CuxDwAAQBAJ&pg=PT666&lpg=PT666&dq=%3CRoute+path%3D%22/:category?%22+element%3D%7B%3CNewsPage/%3E%7D+/%3E&source=bl&ots=78gsWWrkfe&sig=ACfU3U3XMP9HFjGoLB0nv4VA6MTqiW9jGA&hl=ko&sa=X&ved=2ahUKEwjT9cugnZX2AhXnhlYBHQqdAOQQ6AF6BAgxEAM#v=onepage&q&f=false
+2.wikidocs.net - 스프링
+
+코드 모듈화-역할별로 나누기
+재사용하려고
+코드 간략화
+
+3차 프젝
+사용자 편리하게 쓰는 것
+편하게 웹사이트 즐길 수 있도록
+
+아키텍쳐
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=leejunga-0409&logNo=221572241988
+
+페이지
+18,19 
+43
+51
+54 실기시험
+55
+
+포폴에 78페이지 같은 설계서/문서 넣으며녀 좋음(93페이지 같은것)
+문서만들때 ncs 참고.. 예를들어 서버 강조하고 싶으면 ncs사이트에 서버프로그램 항목 보면서 뭐 구현도구로 뭘 쓰고 테스트로 뭘 써서 어쩌구
+
+준거 2.2 - 모듈 2.2에 나옴
+
+파워포인트 목업 다운 - 파워포인트
+
+
+
+6)화면설계_평가지A_이수지
+
+
+--
+런데이
+계단
+청소
+밥먹고
+바이올린 연습 꼭 가고
+프로젝트 디자인 걍 마무리해
+책 하나 읽어놓기
+프로젝트 따라할거 하나 따라하기/그거 하면서 깃허브같은거 정리(3일단위 1일쉬고..)
+이것이 자바다 챕터 2개 끝내기(연습문제까지 암기)
+정처기 읽기
+혼공자 자바스크립트 강의 짧음
+기출 제발 풀어라...
+
+오라클 
+데이터베이ㅡㅅ
+
+
+
+
+
+-------------------------
+<li class="quickResultLstCon" style=background#fff 
+data-lat="37.dddd long 126.ddd
+dataname무교로 
+data-code 이거 뭐지
+data-storecd=1724
+
+
+
+
+
+
+
+
+
+
+
+
+
+<>

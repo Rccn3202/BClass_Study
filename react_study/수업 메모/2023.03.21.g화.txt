@@ -1,0 +1,49 @@
+2023.03.21.화
+
+--복습-----------------------------
+1. props
+-상위컴포넌트 App.jsx
+-하위컴포넌트 propsEx.jsx
+상위에서 <propsEx color="blue" word="바다"> 보내면
+하위에서 export (props)로 받고 props.word로 바다를 받는다.
+
+2. useState 
+[변수명,함수명]=useState(초기값);
+[num,setNum]=useState();  //배열분할대입
+num=0;
+setNum(num+1);
+
+3. useEffect
+useEffect(함수,[ 변수명 ] )
+: 특정 변수가 변할 때만 앞에 있는 함수를 수행하시오
+리액트의 생명주기(카페 재렌더링과 부작용 참고)에서 생성될 때, 함수가 수행될 때마다 자동으로 랜더링이 된다.
+(여기저기서 랜더링이 되면 늦어진다/화면 깜빡이는 현상 발생, 화면 늦게 켜지는 현상) -> useEffect 사용
+useEffect( 함수, [count] ); :
+useEffect( 함수, [ ] ); : 처음에 생성될 때 한번만 함수를 수행하시오 
+
+4. css 스타일 적용하기
+1) node-sass 모듈 설치
+  npm install node-sass 입력(설치 안되면 node-sass docs 검색해서 버전 확인
+
+2) Styled jsx 모듈 설치
+npm install styled-jsx 입력
+package.json에서 "styled-jsx": "^5.1.2", 있는지 확인
+
+
+--1-------------------------------------
+
+styled components
+
+npm install @emotion/react @emotion/styled 설치  
+=> 이런식으로 두개를 설치할 때 띄어쓰기로 구분해줄 수도 있다
+
+emotion
+
+tailwind css--그냥 넘어가~~오류많음
+
+마음에 드는 컴포넌트 하나 골라서 집중
+
+2--이제 리액트 중급??---------------------------
+SPA single page application 최적화 방식
+
+useCallBack 중요

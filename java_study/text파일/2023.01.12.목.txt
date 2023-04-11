@@ -1,0 +1,93 @@
+2023.01.12.목
+
+오류
+String literal is not properly closed by a double-quote
+
+객체지향언어 시작
+
+챕터5
+자바는 클래스를 기반으로 짠다
+상속/부모 클래스는 공통, 자식은 다른 프로그램 짜기
+상속 중 다형성:a프로그램이랑 b 프로그램 따로 짜놓고 끼워넣을 때 표준형으로 만드는 것
+스프링(프레임워크,소프트웨어)에 에러 안나게 꽂는게 중요
+
+카페 참조변수의 자료형 구조 
+
+램 메모리 공간중 stack, heap /그림으로 이해해보기
+stack
+개발자가 프로그램에 접근할 수 있음
+int, double 등등 기본형으로 자료를 선언하면 stack에 들어감
+
+heap
+String name="홍길동"
+Scanner sc=new Scanner(System.in);
+이렇게 대문자로 된 class는 heap에 담긴다
+heap메모리에 들어간 "홍길동"은 16진수의 주소가 생김(주소는 사람이 모름)
+자바프로그램으로 heap 메모리는 접근 못하고 stack 메모리를 통해 접근 가능
+stack에 모든 자료를 넣는 것 못하고 heap 메모리에 필요 데이터 넣고 빼서 쓰는 것
+heap에 있는 자료의 주소를 name이라는 변수가 가지고 있는 것
+new는 heap 메모리에 Scanner 클래스를 올려달라~
+sc는 Scanner 라는 클래스가 들어있는 주소다
+예시)
+
+(main 밖의)
+class student{
+String stName
+int age;
+}
+-메모리에 안올라감. 메인 안에 있는 것들만 올라감
+-main이랑 연결되어야 메모리에 올라감
+-main 내부에 new Student();를 넣어주면 heap메모리 공간에 Student의 stName과 age가 올라감
+-heap 메모리는 자바에서 못쓰므로 student =new Student(); 라고 student변수를 써서 heap의 주소를 Stack에 담는다
+Student student = new Student();
+자료형   변수명    new   클래스명()  (new:해당클래스를 힙메모리에 올려라)
+
+예시)
+class Person{
+String address;
+double point;
+}
+-main 밖에 있으므로 class를 쓸 수 없음
+-new Person(); //주소 생성
+-p =new Person(); //p라는 변수에 주소를 담는다
+-Person p =new Person(); //p는 Person 자료형의 변수라고 선언
+
+.  : in과 같은 뜻. ~안에
+
+main 안에 넣으면 출력됨
+p.address="경기";
+System.out.println(p.address);
+
+-기존의 main 밖의 class 따로 선언하는 것 배움
+
+-main 중 static이 붙어있는 것은 바로 stack에 올라감
+
+-class 안에 메소드 사용할 수 있음
+-메소드: 동작하는 것,실행, 움직임 
+-메소드 형식: 리턴타입 메서드명(메소드가 호출될 때 넣어주는 변수) {처리할 내용들}
+void m1() { syso } : 리턴타입 메소드명() {명령}
+
+-패키지 안에 같은 class 있으면 오류남 :The type Person is already defined
+-메인 밖에
+void m1() {System.out.println("Student 클래스의 m1 메소드");}
+쓰고 메인 안에
+s1.m1();  쓰면 메인 밖의 void가 호출됨 (s1은 Student1의 변수)
+
+-메소드명 길게 잘 써서 알아볼 수 있게 만들기
+
+-class의 변수들은 멤버필드
+-this. : 자신의 클래시의 멤버필드
+
+객체
+class
+
+
+
+
+
+
+
+pj
+채점 프로그램??? 단어 들어있으면 점수 더함
+로또 번호 추출
+입출금 프로그램 추가

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력양식</title>
+</head>
+<body>
+    <form action="board.jsp" method="get"></form>
+    <fieldset>
+        <legend>Shiping Address</legend>
+        <p>
+            <label name="name">이름</label>
+            <input type="text" name="name" for="name">
+        </p>
+        <p>
+            <label name="address">주소</label>
+            <input type="text" name="address" for="address">
+        </p>
+        <p>
+            <label name="city">도시</label>
+            <input type="text" name="city" for="city">
+        </p>
+        <p>
+            <label name="state">배송상태-하나만 선택은 radio, 이름 다 달라야함</label>
+            <input type="radio" name="state" for="state"> 준비중
+            <input type="radio" name="state" for="state"> 배송중
+            <input type="radio" name="state2" for="state"> 배송완료
+        </p>
+        <p>
+            <label name="checkbox">수정사항 체크</label>
+            <input type="checkbox" name="ch1" for="checkbox"> 이름
+            <input type="checkbox" name="ch2" for="checkbox"> 주소
+            <input type="checkbox" name="ch3" for="checkbox"> 도시명
+        </p>
+    </fieldset>
+</body>
+</html>

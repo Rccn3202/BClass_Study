@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>셀렉터와 스타일속성</title>
+    <style>
+        div p{
+            color:darkorange;
+        }
+        p {
+            font-family: 궁서체;
+        }
+        #label1{
+            color:cornflowerblue;
+        }
+        #mon{
+            color:rgb(16, 228, 228);
+        }
+        #tue{
+            color:rgb(212, 43, 119);
+        }
+        #wen{
+            color:rgb(130, 5, 233);
+        }
+        #thu{
+            color:rgb(128, 226, 15);
+        }
+        #fri{
+            color:rgb(236, 21, 21);
+        }
+        .aa{
+            background-color: cornsilk;
+        }
+        .bb{
+            background-image:url("../image/1.jpg");
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>셀렉터 개요</h1>
+    <img src="../image/셀렉터.png">
+    <div>
+        <p>태그셀렉터</p>
+    </div>
+    <p>태그셀렉터2</p>
+    <form>
+        <label id="label1" for="name">이름</label>
+        <input type="text" if="label1"> 
+    </form>
+    <table border="1" class="aa">
+        <tr><td id="mon">월</td><td id="tue">화</td><td id="wen">수</td><td id="thu">목</td><td id="fri">금</td></tr>
+        <tr><td>국</td><td>수</td><td>영</td><td>수</td><td>국</td></tr>
+        <tr><td>국</td><td>수</td><td>영</td><td>수</td><td>국</td></tr>
+    </table>
+
+    <table border="1" class="bb">/*하나 태그 찍을 땐 id, 여러개 동시 적용은 class*/
+        <tr><td id="mon">월</td><td id="tue">화</td><td id="wen">수</td><td id="thu">목</td><td id="fri">금</td></tr>
+        <tr><td>국</td><td>수</td><td>영</td><td>수</td><td>국</td></tr>
+        <tr><td>국</td><td>수</td><td>영</td><td>수</td><td>국</td></tr>
+    </table>
+
+</body>
+</html>

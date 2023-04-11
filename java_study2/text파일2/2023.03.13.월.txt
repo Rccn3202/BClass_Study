@@ -1,0 +1,24 @@
+2023.03.13.월
+
+스트림------
+peek 중간단계
+
+anymatch 최소한 하나의 요소가 만족하는지 여부
+nonmatch 모든 요소가 만족하지 않는지 여부
+
+HashSet인 경우
+동등객체인지 비교
+hashCode()
+equals()
+
+TreeSet
+> < == 비교는 아래로
+Comparable
+Comparator
+
+$ cd store-locator
+$ python -m SimpleHTTPServer 8080
+
+
+
+your active configuration is [cloudshell-30690]

@@ -1,0 +1,14 @@
+.container{
+    border:solid 1px #ccc; /*네모칸*/
+    padding:  16px; /*간격*/
+    margin:8px; /*옆이랑 멀어지기*/
+}
+
+li>div{
+    display:flex; /*머임????*/
+    align-items: center; /*머임????*/
+}
+
+button{
+    margin-left: 16px; /*버튼 옆으로 이동*/
+}

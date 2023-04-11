@@ -1,0 +1,301 @@
+2023.04.06.목
+
+mysql에 시퀀스 없음 대신 autoincrement 명령어 사용-자동 순서 발생기
+
+사용자관리->데이터베이스 관리자
+서버는 여러 사용자가 씀
+사용자 만들고, 사용자 권한주기
+
+시험볼때 developer말고 cmd 사용함
+
+
+
+교재 챕터20
+이클립스 실행
+jdbc 라이브러리
+자바명령-->db연결-->db에 테이블 삽입/삭제/수정/검색
+
+프로젝트에서 build path-configua build path-libraries-classpath-add external jars
+폴더 C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 찾기
+ojdbc6_g.jar 선택-적용하고
+order and export에 잘 들어갔나 확인
+프로젝트에서도 referenced libraries에 들어있나 확인
+
+카페 데이터베이스 6 -JDBC연결하기
+
+ppt20-4페이지 오른쪽 표 3개 중 아무거나 쓰는데 prepare~~를 제일 많이 쓴다
+
+<<<<<<<<<<<<교재 20.4 테이블 만들기>>>>>>>>>>>
+1. 데이터베이스 안에다 테이블 만든다--sqldeveloper에서 만든다
+insert,select,update,delete--자바에서 명령해준다
+
+dba에서 작업
+준비: 프로시저 1개, 함수 1개
+-------------------------------------------------------
+--java 교재에 있는 테이블 만들기 p903
+--사용자 정보 테이블
+create table users(
+userid varchar2(50) primary key,
+username varchar2(50) not null,
+userpassword varchar2(50) not null,
+userage number(3) not null,
+useremail varchar2(50) not null
+);
+
+--게시물 정보 테이블
+create table boards(
+bno number primary key,
+btitle varchar2(100) not null,
+bcontent clob not null,--clob:문자형식에 용량 큰 데이터(char)
+bwriter varchar2(50) not null,
+bdate date default sysdate,
+bfilename varchar2(50) null,
+bfiledata blob null--blob: 바이너리(다 됨/문자,음성,그림..) 형식의 큰 용량 데이터용
+);
+
+--904쪽 bno컬럼은 자동 시퀀스 형식으로 만든다
+create sequence seq_bno nocache;
+create table accounts(
+ano varchar2(20) primary key,
+owner varchar2(20) not null,
+balance number not null
+);
+
+insert into accounts(ano,owner,balance)
+values('111-111-1111','하여름',1000000);
+
+insert into accounts(ano,owner,balance)
+values('222-222-2222','한겨울',0);
+
+select * from accounts;
+
+commit;
+
+--*프로시저 : 단문의 sql문을 연결하여 순차적으로 처리하게 만드는 것
+create or replace procedure user_create(
+a_userid in users.userid%type, --변수명은 in(입력받는다) users테이블에 userid컬럼과 같은 자료형이다
+a_username in users.username%type,
+a_userpassword in users.userpassword%type,
+a_userage in users.userage%type,
+a_useremail in users.useremail%type,
+a_rows out pls_integer --출력(out)되는 자료형은 정수형(integer)이다
+)
+is
+begin --begin 안에 쿼리문 넣는다
+ insert into users(userid,username,userpassword,userage,useremail)
+      values(a_userid,a_username,a_userpassword,a_userage,a_useremail); --단문1 수행.레코드 삽입하는 명령
+a_rows :=sql%rowcount; --단문2 수행. 행의 수를 세서 a_rows 변수에 넣어라
+commit; --단문3 수행. 트랜잭션 반영하기
+
+
+end;
+/ --이제 프로시저 실행해라
+
+--user_login 함수 만들기
+create or replace function user_login(
+a_userid users.userid%type,
+a_userpassword users.userpassword%type
+) return pls_integer
+is 
+v_userpassword users.userpassword%type;
+v_result pls_integer;
+begin
+select userpassword into v_userpassword
+from users
+where userid=a_userid;
+
+if v_userpassword=a_userpassword then
+return 0; --위의 두개가 같으면 0 리턴
+else 
+return 1;
+end if;
+exception
+when no_data_found then
+return 2;
+end;
+/
+-----------준비끝----------------------
+2. 파일 빌드패스(데이터베이스 연결)
+자바 프로젝트 안에  lib 라는 이름의 그냥 폴더 만들기
+폴더 안에 ojdbc6_g.jar 복사해서 넣기
+
+교재 910
+src 안에 클래스 connectionEx
+Connection conn = null; ->java.sql import
+Class.forName("oracle.jdbc.OracleDriver");
+작성 후 try catch
+try문 안에 conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "system","1234");
+예외처리...
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			
+			conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "system","1234");
+			System.out.println("연결 성공");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //JDBC Driver 등록. 정해진 양식임
+	}
+}
+여기까지 작성-> 실행하면 연결성공 뜬다
+sql에서 + 누르면 호스트 이름,포트 등등 알 수 있다. xe(교육용 버전)
+
+*html--->java--->db 연결/지금은 java->db 연결중
+책 20.6
+UserInsertEx 클래스 생성, 작성 다 하면
+자바에 
+	int rows=pstmt.executeUpdate();//데이터베이스에 insert문을 실행하는 명령
+			System.out.println("저장된 행수는? "+rows);
+까지 입력
+**
+닫을때 안쪽부터 닫는다
+ 
+package javaCh20;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class UserInsertEx {
+
+	public static void main(String[] args) {
+		Connection conn = null;
+
+		try {
+			//1.연결
+			Class.forName("oracle.jdbc.OracleDriver");//jar파일을 java에 올려준다. ppt 20-9 그림에 a그림 driver까지의 과정.자바한테 오라클 db로딩해준다
+			//2.쿼리문 만들기
+			conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "system","1234");//ppt 2번,3번과정. 데이터베이스 직전까지 온것
+			System.out.println("연결 성공");
+			//3.실행
+			String sql="insert into users (userid,username,userpassword, userage, useremail) values(?,?,?,?,?)";
+			PreparedStatement pstmt=conn.prepareStatement(sql);// 연결된 곳으로 sql문장을 넣는다
+			pstmt.setString(1,"winter");
+			pstmt.setString(2,"한겨울");
+			pstmt.setString(3,"12345");
+			pstmt.setInt(4,25);
+			pstmt.setString(5,"winter@mycompany.com");
+			
+			int rows=pstmt.executeUpdate();//데이터베이스에 insert문을 실행하는 명령
+			System.out.println("저장된 행수는? "+rows);
+			pstmt.close();//
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //JDBC Driver 등록. 정해진 양식임
+		finally {	//연결하다가 어디서 에러가 나든 닫아라
+			if(conn !=null) {}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+db가서
+insert into users (userid,username,userpassword, userage, useremail) values(?,?,?,?,?);
+입력
+
+예제------
+//자바에 삽입하기
+insert into boards(bno,btitle,bcontent,bwriter) values(1000,'게시판제목1','게시판내용1','홍길동1'); 
+select * from boards;
+
+
+*헷갈리니까 
+데이터베이스에서 쿼리문 만들어서 넣업보고 인식 잘 되면 자바에 넣기
+
+
+**이미지파일을 데이터베이스에 저장하는 방법
+1.데이터베이스의 테이블은 blob 자료형으로 선언한다
+2.자바에서는 
+pstmt.setBlob(5, new FileInputStream("C:\\webStudyB\\study\\JavaStudy_AtHome\\HTMLnCSS\\test.jpg"));
+
+
+
+
+
+
+
+
+*깃 연결.. 자바2/아니면 정리//
+------------------------------------
+
+
+-------------------------------------------------------------------
+짝수는 싫어요
+정수 n이 매개변수로 주어질 때, 
+n 이하의 홀수가 오름차순으로 담긴 배열을 return하도록 solution 함수를 
+완성해주세요.
+10	[1, 3, 5, 7, 9]
+15	[1, 3, 5, 7, 9, 11, 13, 15]
+
+int* solution(int n) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 
+할당 길이는 상황에 맞게 변경해주세요.
+    int* answer = (int*)malloc(1);
+    return answer;
+}
+ArrayList<Integer> list = new ArrayList<>();
+
+----------------
+뭔...?
+동적배열 :[ "확장 가능한 배열"]  
+Collection 인터페이스를 확장하는 인터페이스는 List, Queue, Set이 있다. 
+그중 List인터페이스를 구현한 클래스가 ArrayList이다. 
+https://what-am-i.tistory.com/63?category=1000403
+1. ArrayList 객체 생성
+ArrayList<Integer> list = new ArrayList<>();
+2. ArrayList 원소 접근
+참조변수. add();   // ArratList에 원소 추가
+참조변수. remove(); // 괄호에 들어있는 인덱스 번호의 원소를 지운다. // 삭제한 데이터를 반환한다. 
+// 위치, 객체 둘다 매개변수로 줄 수 있다. 
+참조변수. clear();  // 모든 데이터를 삭제한다. 
+참조변수. get(); // 괄호에 들어있는 인덱스 번호의 원소를 반환한다.
+참조변수. size(); // ArratList의 크기를 반환한다.
+
+++ ) 이건 또 무슨말...? 
+ArrayList는 쓰레드에 안전하지 않다.
+Vector가 쓰레드에 안전하다. 
+
+ 
+malloc, calloc은 어떤 함수일까??
+https://velog.io/@meong9090/42seoul-malloc-calloc%EC%9D%80-%EC%96%B4%EB%96%A4-%ED%95%A8%EC%88%98%EC%9D%BC%EA%B9%8C
+
+
+
+for(int i=1;i<=;i+=2){      }
+
+-------------------------------------------------------------
+양꼬치
+머쓱이네 양꼬치 가게는 10인분을 먹으면 음료수 하나를 서비스로 줍니다. 
+양꼬치는 1인분에 12,000원, 음료수는 2,000원입니다. 
+정수 n과 k가 매개변수로 주어졌을 때, 
+양꼬치 n인분과 음료수 k개를 먹었다면 총얼마를 지불해야 하는지 
+return 하도록 solution 함수를 완성해보세요.
+
+10	3	124,000
+64	6	768,000
+
+n*12000+k*2000
+10<=n<20 -2000
+20<=n<30 -2000*2
+int t=0;
+for(int t=1;t=???,t++)
+if(10*t<=n && n<10*(t+1)) {n*12000+(k-t)*2000}
+
+
+int solution(int n, int k) {
+    int answer = 0;
+    return answer;
+}
+--------------------------------------------------------------
+
+
+B트리,B+트리, B*트리 개념 정리
+https://velog.io/@seanlion/btree
