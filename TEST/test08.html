@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script src="./test08.js"></script>
+   <script>
+function check(){
+    if(document.getElementById("sname").value==""){
+        alert("성을 입력하세요");
+        return; }
+    if(document.getElementById("fname").value==""){
+        alert("이름을 입력하세요");
+        return; }
+    if(document.getElementById("email").value==""){
+        alert("이메일을 입력하세요");
+        return; }
+    frm.submit(); 
+}
+
+// 이메일 형식 체크 정규식
+// ================ email 유효성검사 ================ //
+function Validation(){
+        var RegExp = /^[a-zA-Z0-9]{4,12}$/; //id와 pwassword 유효성 검사 정규식
+        //이메일 유효성검사
+        var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        var n_RegExp = /^[가-힣]{2,15}$/; //이름 유효성검사 정규식
+}
+if(e_RegExp.value == ''){ // 이메일 입력여부 검사
+            alert("이메일을 입력해주세요.");
+            return false;
+        }
+        
+        if(!e_RegExp.test(objEmail.value)){ //이메일 유효성 검사
+            alert("올바른 이메일 형식이 아닙니다.");
+            return false;
+        }
+
+
+   </script>
+    <form  name="frm">
+   성 : <br> <input type="text" name="sname" id="sname" > <br>
+    이름 : <br><input type="text" name="fname" id="fname"  ><br>
+   
+    이메일 : <br><input type="text" name="mail" id="mail" ><br>
+    
+    
+        성별 : <input type="radio" name="gender" value="남성"> 남성
+    <input type="radio" name="gender" value="여성"> 여성
+    <br>
+특기 : 
+    <input type="checkbox" name="abil" value="html"> HTML
+    <input type="checkbox" name="abil" value="css"> CSS
+    <input type="checkbox" name="abil" value="java"> JAVA
+    <input type="checkbox" name="abil" value="mysql"> MySQL
+<br>
+전공 : <select name="subject" size="1">
+    <option value = "1">Computer</option>
+    <option value = "2">AI</option>
+    <option value = "3">Design</option>
+    <option value = "4">Art</option>
+</select>
+<br>
+생일 : <input type="date">
+<br>
+<textarea name="text" rows="5" cols="40" wrap="virtual">하고 싶은말!!</textarea>
+<br>
+<input type="button" id="submit" value="가입하기" onclick="check()">
+<input type="reset" value="취소하기">
+</form>
+</body>
+</html>
