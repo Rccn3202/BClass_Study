@@ -1,0 +1,99 @@
+2023.04.11.화
+
+마리아디비대신 mysql
+
+test01 삭제 해놓기
+레거시 프로
+큰 프로젝트는 mvc
+xml은 메타데이터. 프로그램의 환경설정, 정보 등 나온다. web.xml은 웹
+pom.xml은 전반적인
+
+3.2-3.3
+sts 프로젝트 눌러서 properties 빌드패스-자바 11로 변경
+project pacets에서 자바 버전 11로 변경
+pom.xml들어가서 <java-version>11</java-version>
+<org.springframework-version>5.2.5.RELEASE</org.springframework-version>
+	
+서버 올리기 또는 내리기 SampleSpringYse
+expro 올려야하는데  Project facet Java version 11 is not supported.나옴 ?????????
+
+3.6 메이븐 빌드 실행 중요!!
+
+메이븐 클린/빌드 했음
+
+톰캣: 서버 역할 해주는 프로그램/톰캣을 설치한 컴퓨터를 서버로 만들어준다
+
+
+아파치 톰캣 9.0
+자바 11이면 톰캣은 9 쓰면 됨
+이거 설정할 때
+만약 구글 드라이버 가입하면 아이피주소 주는데 server's host name에 localhost 대신 아이피 주소 쓰면 됨
+localhost 또는 127.0.0.1 : 자기 컴퓨터에 깔겠다 이 이야기
+원격컴퓨터에 연결하고 싶으면 localhost 대신에 원격 포트번호를 쓰면 된다
+
+
+톰캣 기본포트는 8080인데 로컬컴퓨터에서 오라클이 설치되어있는 경우
+(포트 충돌(오라클도 8080 포트 사용한다))
+포트가 동일하기 때문에 오류가 난다. 그래서 톰캣포트를 8085 이런식으로 바꿔야함(8000~9999까지 가능)
+
+overview에서 port8080을 8085로 바꿈/타임아웃 120초로 바꿈
+모듈스에서 /yse는 /로 바꿈
+
+브라우저 요청 : http://localhost 어쩌구  - 서버 안켜져있으면 사이트 안켜짐
+연결할 수 없음 이런식으로 나오는게 응답 (한글 깨지면 안되므로 utf-8로 고정하기) 03.03 프로젝트 세팅 3
+3.8 인코딩(클라이언트가 서버로 들어가는 것) 필터를 설정한다
+
+-------------
+설정 2번 웹경로설정 안함!!!!!!!!!!!!!!
+마이에스큐엘 설치!!!!!!!!!!!!!!
+
+web.xml에 들어가면 servlet이 있음
+서블릿(servlet): 자바코드 안에 html 넣어준 서버 프로그램
+jsp-html안에 자바코드 넣어준 서버 프로그램
+실행 .exe
+클래스 .class
+서블릿 .java - 자바코드 안에  html 넣어준 서버프로그램
+jsp .jsp - html 안에 자바코드 넣어준 서버프로그램
+
+jsp 실행단계
+JSP.jsp -> 서블릿 .java -> 클래스.class ->실행.exe
+
+보내준 자료 보기!!!!!!!!!!!!!!!!!!!
+
+로그레벨 설정: 디버깅 할 때 중간단계 출력해볼떄 사용
+자바스크립트는 console.log()
+스프링은 log4j (1단계 2단계 ... 단계있음. 단계가 높을 수록 결과가 많이 나온다) 
+
+
+회원가입 관리 컨트롤러
+
+
+utf8로 자동으로 맞추는 법
+카페 자바>이클립스에서 한글깨짐 고치기
+
+마이에스큐엘 charset utf8 /utf8 general ci
+
+
+
+
+create 만들기
+
+
+mysql 테이블 만들기
+1)membere table
+id 자동증가
+password varchar(30)
+name varchar(100)
+email varchar(100)
+phone varchar(100)
+
+
+
+board table
+
+
+
+
+
+
+s

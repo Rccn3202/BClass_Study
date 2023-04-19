@@ -1,0 +1,9 @@
+package org.zerock.web.vo;
+
+
+public class Product {
+   private String name;
+   private double price;
+   
+   
+}

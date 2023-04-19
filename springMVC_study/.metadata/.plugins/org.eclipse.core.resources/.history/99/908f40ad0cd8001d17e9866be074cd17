@@ -1,0 +1,18 @@
+package com.mycompany.basic;
+
+import org.springframework.stereotype.Controller;
+
+//어노테이션 : 이 클래스가 어떤 역할을 하는지 지정해줌 (controller 붙이면 컨트롤러 역할 등)
+@Controller
+public class BoardController {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+
+4.3 책 생성에서 
+RequestMapping : 

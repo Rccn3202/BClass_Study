@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="SampleSpringYse"/>
+<aop-project name="Expro"/>
+<aop-project name="myEx01"/>
+<aop-project name="ex00"/>
+</aop-reference-model>

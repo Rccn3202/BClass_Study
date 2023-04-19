@@ -1,0 +1,111 @@
+package sample.spring.yse;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller  
+public class BookController {
+	
+	@Autowired
+	BookService bookService;
+	
+	@RequestMapping(value="/cinsert", method=RequestMethod.GET)
+	public ModelAndView create() {
+		return new ModelAndView("book/create");
+	}
+
+	@RequestMapping(value = "/cinsert", method = RequestMethod.POST)
+	public ModelAndView createPost( @RequestParam Map<String, Object> map  ) {
+		ModelAndView mav = new ModelAndView();
+		
+		String bookId = this.bookService.create(map);
+		if(bookId==null) {
+			mav.setViewName("redirect:/create"); // 재요청하기 /create 라고 
+		} else {
+			System.out.println( "삽입 성공");
+			mav.setViewName("redirect:/detail?bookId=" + bookId);
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/detail", method=RequestMethod.GET )
+	public ModelAndView  detail( @RequestParam  Map<String, Object>  map ) {
+		Map<String, Object> detailMap = this.bookService.detail(map);
+		
+		System.out.println( detailMap + "~~");
+		ModelAndView mav = new ModelAndView();
+		if(detailMap == null ) {
+			mav.setViewName("/book/error");
+		}	
+		else {
+		mav.addObject("data", detailMap); //뷰로 detailMap의 값(데이터베이스에서 받은 ResultSet)을 data 속성에 담아서 보내라
+	    String bookId = map.get("bookId").toString();
+	    mav.addObject("bookId", bookId);
+	    
+	    //http://localhost:8085/yse/detail?bookId=5&bookQr=50&bookPublisher=한빛
+//	    String bookQr = map.get("bookQr").toString();	//50
+//	    mav.addObject( "bookQrAName" , bookQr );//  bookQr값을 받아서 뷰의 bookQrAName 속성값으로 보내라
+//	    String bookPub=map.get("bookPublisher").toString(); //한빛
+//	    mav.addObject("bookPubAName", bookPub);
+	    
+//	   // http://localhost:8085/yse/detail?bookId=5&a=2000&b=true&c=이젠
+//       String a = map.get("a").toString();
+//       mav.addObject("aAN", a);
+//       String b = map.get("b").toString();
+//       mav.addObject("bAN", b);
+//       String c = map.get("c").toString();
+//       mav.addObject("cAN", c);
+       
+       
+	    
+	    
+	    mav.setViewName("/book/detail"); // src/main/webapp/web-inf/views/book/detail.jsp파일로 응답해라
+		}
+	    return mav;
+	}
+	//수정하기 컨트롤러 짜기
+	//요청 -->처리:서비스 객체 전달->뷰객체 생성-->응답
+	@RequestMapping(value="/update", method=RequestMethod.GET) //요청에 대한 코드
+	public ModelAndView update(@RequestParam Map<String,Object> map) {
+		Map<String, Object> detailMap =this.bookService.detail(map); //서비스코드 호출
+		
+		ModelAndView mav=new ModelAndView(); //뷰 생성
+		
+		///!!!!!!!!!!!!
+		mav.addObject("detail", detailMap);
+		mav.setViewName("/book/update"); //뷰 이름은 update.jsp 파일로 응답함
+		return mav;
+	}
+	
+	//삭제 메소드
+	//요청-->처리 : 삭제 서비스로 연결->뷰 설정->응답
+//	 <form method="post" action="/delete">
+//     <input type="hidden" name="bookId" value="${bookId}"/>
+//     <input type="submit" value="삭제" />
+//  </form>
+	@RequestMapping(value="/delete",method=RequestMethod.POST)//delete 요청,post방식, bookid라는 name으로
+	public ModelAndView deletePost(@RequestParam Map<String,Object> map) {//요청해서 map에 받아옴
+		boolean isDeleteSuccess=this.bookService.remove(map);
+		//요구사항 : 삭제한 후에 목록이 보이게 하기, 삭제 실패하면 다시 상세페이지로 보이게 하기
+		ModelAndView mav=new ModelAndView();
+		String bookId=map.get("bookId").toString();
+		if(isDeleteSuccess) {
+			mav.setViewName("redirect:/list"); //삭제성공->리스트 보이게
+		} else {
+			mav.setViewName("redirect:/detail?bookId="+bookId); //실패->상세페이지
+		}
+		return mav;
+	}
+	
+	
+}
+
+
+
+

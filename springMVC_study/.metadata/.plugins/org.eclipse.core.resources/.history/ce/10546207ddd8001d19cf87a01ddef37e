@@ -1,0 +1,6 @@
+package com.mycompany.basic;
+
+// 역할 명시함
+public interface BoardService {
+
+}

@@ -1,0 +1,14 @@
+package sample.spring.yse;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Repositor
+public class BookDao {
+
+	
+ @Autowired
+	 SqlSessionTemplate sqlSessionTemplate;
+	}
+	
+

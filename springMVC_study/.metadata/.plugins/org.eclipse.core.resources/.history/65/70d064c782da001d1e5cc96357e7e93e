@@ -1,0 +1,7 @@
+package org.zerock.web;
+
+public class MySQLConnectionTest {
+
+	private static final String DRIVER ="com.mysql.cj.jdbc.Driver";
+	
+}

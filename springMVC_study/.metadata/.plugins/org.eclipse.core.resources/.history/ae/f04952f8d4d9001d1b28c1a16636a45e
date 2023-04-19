@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>책 전체 목록</title>
+</head>
+<body>
+  <h1> 책 전체 목록 </h1>
+  <table>
+  <thead>
+  <tr>
+  <td>책번호</td>
+  <td>제목</td>
+  <td>카테고리</td>
+  <td>가격</td>
+  <td>날짜</td>
+  </tr>
+  </thead>
+  <tbody>
+  <!--data에는 list의 전체 주소가 들어있음-->
+  <c:forEach var="row" items="${data} "> 
+  <tr>
+  <td><a href="/detail?bookId=${row.book_id}">${row.book_id} </a> </td>
+  <td><a href="/detail?bookId=${row.book_id}"> ${row.title} </a></td>
+  <td>${row.category} </td>
+  <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${row.price}"></fmt:formatNumber></td>
+  <td>${row.insert_date} </td>
+  </tr>
+  </c:forEach>
+  </tbody>
+  </table>
+  <p>
+  <a href="/cinsert"> 생성 </a>
+  </p>
+</body>
+</html>

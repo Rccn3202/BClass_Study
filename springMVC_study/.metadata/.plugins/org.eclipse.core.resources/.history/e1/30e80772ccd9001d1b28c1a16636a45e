@@ -1,0 +1,48 @@
+package sample.spring.yse;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository  // 스프링이 관리한다  저장소 용도로 사용하는 클래스이다 라고 지정함
+public class BookDAO {
+
+	//필드 선언
+	@Autowired  // 자동주입해라 
+	SqlSessionTemplate sqlSessionTemplate;
+	
+	//메소드 삽입에 관련 역할을 하는 메소드 insert- username 
+	public int insert( Map<String, Object> map) {
+		return this.sqlSessionTemplate.insert("book.insert", map);
+	}
+	
+	//책 상세 DAO메서드 작성
+	public  Map<String, Object>   selectDetail( Map<String, Object> map ) {
+		return this.sqlSessionTemplate.selectOne("book.select_detail", map);	
+	}
+	
+	//책 수정
+	public int update( Map<String, Object> map ) {
+		return this.sqlSessionTemplate.update("book.update", map);	
+	}
+	
+	//책 삭제
+	public int delete( Map<String, Object> map) {
+		return this.sqlSessionTemplate.delete("book.delete",map);
+	}
+	
+	//책 전체 목록->모든 항목이 다 나와야함. 한 레코드는 map, 그 레코드가 여러개..리스트 안에 맵이 들어있다
+	public List< Map<String, Object> > selectList(Map<String,Object> map){
+	return this.sqlSessionTemplate.selectList("book.select_list", map);
+
+}
+
+}
+
+
+
+
+

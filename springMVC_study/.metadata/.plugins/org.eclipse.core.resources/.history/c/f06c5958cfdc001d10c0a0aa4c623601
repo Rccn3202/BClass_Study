@@ -1,0 +1,11 @@
+package org.zerock.web.vo;
+
+import lombok.Data;
+
+@Data
+public class Product {
+   private String name;
+   private double price;
+   
+   
+}
